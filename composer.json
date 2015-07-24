@@ -1,0 +1,24 @@
+{
+  "name": "pedrotanaka/flock-tweeter",
+  "description": "Just a little cli tool to send emails as hooks.",
+  "require": {
+    "phpmailer/phpmailer": "^5.2",
+    "symfony/console": "^2.7",
+    "symfony/config": "^2.7",
+    "symfony/yaml": "^2.7",
+    "symfony/templating": "^2.7"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pedro Sena Tanaka",
+      "email": "pedro.stanaka@gmail.com"
+    }
+  ],
+  "minimum-stability": "beta",
+  "autoload": {
+    "psr-0": {
+      "Flock": "src/"
+    }
+  }
+}

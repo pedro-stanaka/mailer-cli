@@ -1,0 +1,5 @@
+host: smtp.gmail.com          # smtp server
+from: depot.rails@gmail.com   # sender email and user to login
+name: Flock Application       # Name that will appear as the sender
+passwd: secret                # password for authentication
+debug: 0                      # Either 0 or 2, 2 enable SMTP debbuging
