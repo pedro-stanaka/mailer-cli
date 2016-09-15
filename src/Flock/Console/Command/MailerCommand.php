@@ -118,7 +118,17 @@ class MailerCommand extends Command {
      */
     private function sendMail($mailer, $to, $subject, $body)
     {
-        $mailer->addAddress($to);
+        $addresses = $this->parseEmails($to);
+
+        if (is_array($addresses)) {
+            foreach ($addresses as $address) {
+                $mailer->addAddress($address);
+            }
+        } else {
+            $mailer->addAddress($to);
+        }
+
+
         $mailer->Subject = $subject;
 
         $loader = new FilesystemLoader(ROOT . '/src/Flock/Templates/%name%');
@@ -134,6 +144,21 @@ class MailerCommand extends Command {
             echo "Mailer error: " . $mailer->ErrorInfo;
         }
 
+    }
+
+    /**
+     * Parse the email passed to see if is multiple email.
+     * @param $to string String with multiple emails or not.
+     * @return array|string If the email contains string return an array with all the emails
+     * passed as parameter, return the $to parameter itself otherwise.
+     */
+    private function parseEmails($to)
+    {
+        if (strpos($to, ",") !== false) {
+            return explode(',', $to);
+        }
+
+        return $to;
     }
 
 
